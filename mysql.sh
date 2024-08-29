@@ -15,7 +15,7 @@ Y="\e[33m"
 C="\e[36m"
 
 CHECK_ROOT() {
-    if [ $USERID -ne 0]; then
+    if [ $USERID -ne 0 ]; then
         echo -e "$R Please run this script with root user privilage $N " | tee -a $LOGFILE
         exit 1
     fi
