@@ -43,7 +43,7 @@ VALIDATE $? "Enabling MySQL server"
 systemctl start mysqld &>> $LOGFILE
 VALIDATE $? "Starting MySQL server"
 
-mysql -h mysql.laven.online -u root -pExpenseApp@1 -e 'show databases;' &>> $LOGFILE
+mysql -h mysql.laven.cloud -u root -pExpenseApp@1 -e 'show databases;' &>> $LOGFILE
 if [ $? -ne 0 ]
 then
 echo "MySQL root password is not setup,  $Y setting now $N" &>>$LOGFILE
