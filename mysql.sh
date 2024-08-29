@@ -2,7 +2,7 @@
 
 LOG_FOLDER="/var/log/expenses/"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-TIMESTAMP=$(date +%Y%m%D%H%M%S)
+TIMESTAMP=$(date +%Y%m%d%H)
 PID=$$
 LOGFILE="$LOG_FOLDER/$SCRIPT_NAME_$PID_$TIMESTAMP.log"
 
@@ -46,10 +46,10 @@ VALIDATE $? "Starting MySQL server"
 mysql -h mysql.laven.online -u root -pExpenseApp@1 -e 'show databases;' &>> $LOGFILE
 if [ $? -ne 0 ]
 then
-echo "MySQL root password is not setup,  $Y setting now $N" &>>$LOG_FILE
+echo "MySQL root password is not setup,  $Y setting now $N" &>>$LOGFILE
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "Setting UP root password"
 else
-    echo -e "MySQL root password is already setup...$Y SKIPPING $N" | tee -a $LOG_FILE
+    echo -e "MySQL root password is already setup...$Y SKIPPING $N" | tee -a $LOGFILE
 fi
 
